@@ -1,0 +1,46 @@
+{
+  "name": "makeador-web",
+  "version": "0.0.1",
+  "private": true,
+  "repository": "https://github.com/makeador/makeador-web",
+  "homepage": "https://makeador-web.now.sh",
+  "author": "Ignacio Álvarez, Esteban Las, Rodrigo López",
+  "dependencies": {
+    "graphql-fetch": "^1.0.1",
+    "makeador-core": "^0.0.3",
+    "normalize.css": "^5.0.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "styled-components": "^1.4.4"
+  },
+  "devDependencies": {
+    "eslint-config-xo-react": "^0.10.0",
+    "eslint-plugin-react": "^6.10.0",
+    "react-scripts": "0.9.3",
+    "xo": "^0.17.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "xo": {
+    "space": true,
+    "env": [
+      "browser",
+      "jest"
+    ],
+    "parser": "babel-eslint",
+    "extends": "xo-react",
+    "rules": {
+      "import/no-unassigned-import": 0,
+      "unicorn/filename-case": 0,
+      "react/jsx-handler-names": 0,
+      "react/jsx-closing-bracket-location": [
+        1,
+        "tag-aligned"
+      ]
+    }
+  }
+}
