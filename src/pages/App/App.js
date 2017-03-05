@@ -13,28 +13,49 @@ class App extends Component {
     this.queryMakeador = this.queryMakeador.bind(this);
   }
   state = {
-    makea: null
+    makea: null,
+    loading: true,
+    error: false
   };
   async queryMakeador() {
-    const response = await query(`
-      {
-        makea
-      }
-    `);
     this.setState({
-      makea: response.data.makea
+      loading: true
     });
+    try {
+      const response = await query(`
+        {
+          makea
+        }
+      `);
+      this.setState({
+        makea: response.data.makea,
+        loading: false,
+        error: false
+      });
+    } catch (err) {
+      this.setState({
+        makea: null,
+        loading: false,
+        error: true
+      });
+    }
   }
   async componentWillMount() {
     await this.queryMakeador();
   }
   render() {
     return (
-      <Layout makea={this.state.makea}>
-        <Text>
-          {this.state.makea}
+      <Layout {...this.state}>
+        <Text black={this.state.error}>
+          {this.state.error ? `Can't fetch makeador` : this.state.makea}
         </Text>
-        <Button onClick={this.queryMakeador}>Recalculate if makea</Button>
+        <Button
+          onClick={this.queryMakeador}
+          loading={this.state.loading}
+          hide={!this.state.makea && !this.state.error}
+        >
+          Recalculate if makea
+        </Button>
       </Layout>
     );
   }
