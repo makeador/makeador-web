@@ -16,7 +16,7 @@
   "devDependencies": {
     "eslint-config-xo-react": "^0.10.0",
     "eslint-plugin-react": "^6.10.0",
-    "react-scripts": "0.9.3",
+    "react-scripts": "1.1.0",
     "xo": "^0.17.1"
   },
   "scripts": {
